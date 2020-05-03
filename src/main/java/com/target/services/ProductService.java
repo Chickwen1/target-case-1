@@ -38,7 +38,9 @@ public class ProductService {
 	 */
 	public Product update(ProductDTO productDTO) {
 		Product product = ProductConverter.convert(productDTO);
-		validateProductId(product.getProductId());
+		double updatedPrice = product.getPrice();
+		product = validateProductId(product.getProductId());
+		product.setPrice(updatedPrice);
 		return productRepo.save(product);
 	}
 	
@@ -50,7 +52,7 @@ public class ProductService {
 		if (product == null) {
 			throw new InvalidProductException("Invalid");
 		}
-		product.setTitle(this.getExternalTitle(productId));
+	    product.setTitle(this.getExternalTitle(productId));
 		return product;
 		
 	}
