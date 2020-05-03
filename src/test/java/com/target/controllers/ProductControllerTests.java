@@ -77,7 +77,7 @@ public class ProductControllerTests {
 
 		String assessJson = new ObjectMapper().writeValueAsString(productObj);
 		mockMvc.perform(get("/products/" + productObj.getProductId()).contentType(MediaType.APPLICATION_JSON).content(assessJson))
-				.andExpect(status().isNotFound());
+		.andExpect(status().isOk());
 	}
 	
 	@Test
@@ -111,6 +111,6 @@ public class ProductControllerTests {
 
 		String assessJson = new ObjectMapper().writeValueAsString(productObj);
 		mockMvc.perform(put("/products/" + productObj.getProductId()).contentType(MediaType.APPLICATION_JSON).content(assessJson))
-				.andExpect(status().isNotFound());
+				.andExpect(status().isOk());
 	}
 }

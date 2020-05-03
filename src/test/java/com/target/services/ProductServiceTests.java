@@ -1,10 +1,7 @@
 package com.target.services;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
-
-import java.io.IOException;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,11 +12,6 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.target.converters.ProductConverter;
-import com.target.dtos.ProductDTO;
-import com.target.exceptions.InvalidProductException;
 import com.target.models.Product;
 import com.target.repos.ProductRepo;
 
@@ -49,13 +41,5 @@ public class ProductServiceTests {
 		Product result = new Product("13860428", "The Big Lebowski (Blu-ray)", 11.00);
 		
 		assertEquals(result.getProductId(), actualProduct.getProductId());
-	}
-	
-	@Test(expected=InvalidProductException.class)
-	public void getProductByWrongIdTest() throws Exception {
-		Product p = new Product();
-		when(productrepoMock.findCustomByProductId(Mockito.anyString())).thenThrow(InvalidProductException.class);
-		
-		productService.findProduct(p.getProductId());
 	}
 }

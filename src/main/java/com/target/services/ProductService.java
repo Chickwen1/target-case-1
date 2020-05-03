@@ -3,6 +3,8 @@ package com.target.services;
 import java.io.IOException;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,13 +17,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.target.converters.ProductConverter;
 import com.target.dtos.ProductDTO;
 import com.target.exceptions.BadResponseException;
-import com.target.exceptions.InvalidProductException;
 import com.target.models.Product;
 import com.target.repos.ProductRepo;
 
 @Service
 public class ProductService {
 
+	protected Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	@Autowired
 	private ProductRepo productRepo;
 	
@@ -49,12 +52,8 @@ public class ProductService {
 	 */
 	private Product validateProductId (String productId) {
 		Product product = productRepo.findCustomByProductId(productId);
-		if (product == null) {
-			throw new InvalidProductException("Invalid");
-		}
 	    product.setTitle(this.getExternalTitle(productId));
 		return product;
-		
 	}
 	
 	/*
@@ -84,7 +83,7 @@ public class ProductService {
 			else
 				throw new BadResponseException("Bad Response");
 		} catch (Exception e) {
-			System.out.println(responseCode);
+			logger.debug("HTTP Response failed: " + responseCode + " " +  e);
 		}
 
 		return null;
