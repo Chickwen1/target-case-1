@@ -9,6 +9,9 @@ private ProductConverter() {
 		
 	}
 	
+/*
+ * Convert Data Transfer Object response to Product Object
+ */
 	public static ProductDTO convert(Product p) {
 		ProductDTO product = new ProductDTO();
 		product.setProductId(p.getProductId());
@@ -17,6 +20,10 @@ private ProductConverter() {
 		return product;
 	}
 	
+
+/*
+ * Convert Product Object to Data Transfer Object response 
+ */
 	public static Product convert(ProductDTO p) {
 		Product product = new Product();
 		product.setProductId(p.getProductId());

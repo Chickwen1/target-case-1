@@ -24,23 +24,37 @@ public class ProductService {
 	@Autowired
 	private ProductRepo productRepo;
 	
+	/*
+	 * Get a product id from mongodb, then use external site to retrieve product title. Product is then returned
+	 */
 	public Product findProduct(String productId) throws JsonParseException, JsonMappingException, IOException {
+		Product product = validateProductId(productId);
+		return product;
+	}
+	
+	/*
+	 * Look if request is valid then update transaction
+	 */
+
+	public Product update(ProductDTO productDTO) {
+		Product product = ProductConverter.convert(productDTO);
+		validateProductId(product.getProductId());
+		return productRepo.save(product);
+	}
+	
+	private Product validateProductId (String productId) {
 		Product product = productRepo.findCustomByProductId(productId);
 		if (product == null) {
 			throw new InvalidProductException("Invalid");
 		}
 		product.setTitle(this.getExternalTitle(productId));
 		return product;
+		
 	}
-
-	public Product update(ProductDTO productDTO) {
-		Product product = ProductConverter.convert(productDTO);
-		product = productRepo.findCustomByProductId(product.getProductId());
-		if (product == null) {
-			throw new InvalidProductException("Invalid");
-		}
-		return productRepo.save(product);
-	}
+	
+	/*
+	 * Method to call external site, then get JSON object. If valid, it will grab product title from map
+	 */
 	
 	@SuppressWarnings("unchecked")
 	private String getExternalTitle(String id) {
