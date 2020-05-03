@@ -17,7 +17,9 @@ Responds to an HTTP GET request at /products/{id} and delivers product data as J
 	<li>Reads pricing information from a NoSQL data store and combines it with the product id and name from the HTTP request into a single response.</li>
 	<li>BONUS: Accepts an HTTP PUT request at the same path (/products/{id}), containing a JSON request body similar to the GET response, and updates the product’s price in the data store.</li>
 </ul>
+
 *********************************************************************************************************************************
+
 # __My Solution:__
 
 <ol>
@@ -30,8 +32,13 @@ Responds to an HTTP GET request at /products/{id} and delivers product data as J
 	<li>Unit tests for testing program.</li>
 </ol>
 
-###### __Technology Stack:__
+### __Technology Stack:__
+
 <ul>
+	<li>Java 1.8</li>
+	<ul>
+		<li>This is a widely used version of Java that works in many environments. Also, I am a full stack java developer so I wanted to use Java.</li>
+	</ul>
 	<li>Spring Boot</li>
 	<ul>
 		<li>Spring boot has a built in server (Tomcat) and helps reduce boiler code increasing development time through various things like IoC.</li>
@@ -52,6 +59,25 @@ Responds to an HTTP GET request at /products/{id} and delivers product data as J
 	<ul>
 		<li>Swagger is a great tool I love to use for testing REST APIs as to Postman. It makes calls like GET, POST, PUT, etc very easy to visualize and test JSON objects with results displayed as well.</li>
 	</ul>
+	<li>Git 2.26.2</li>
+	<ul>
+		<li>Git is a familiar tool I know to manage versions during development.</li>
+	</ul>
 </ul>
-###### __Setup instructions:__
 
+### __Setup instructions:__
+1. Java 1.8
+	Verify version using 
+```
+java -version
+```
+If the version is not 1.8 or higher, please update your current version at https://java.com/en/download/
+2. Spring Tool Suite (you may use another IDE): https://spring.io/tools
+3. Install Mongo DB: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/
+4. Install Maven: https://www.mkyong.com/maven/how-to-install-maven-in-windows/ 
+5. Github:
+Download project from the following git repository
+https://github.com/Chickwen1/target-case-1 or use Git Bash (in desired location) and enter
+```
+git clone https://github.com/Chickwen1/target-case-1.git
+```
