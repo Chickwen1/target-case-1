@@ -2,13 +2,8 @@ package com.target;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import com.target.models.Product;
 import com.target.repos.ProductRepo;
@@ -21,6 +16,9 @@ public class TargetCaseApplication {
 		SpringApplication.run(TargetCaseApplication.class, args);
 	}
 
+	/*
+	 * Delete items is mongo database and then creating initial entry into mongo database
+	 */
 	@Bean
 	public CommandLineRunner init(ProductRepo productRepo) {
 		return (args) -> {

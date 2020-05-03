@@ -33,7 +33,7 @@ public class ProductService {
 	}
 	
 	/*
-	 * Look if request is valid then update transaction
+	 * Covert DTO to product object (mapped class) and look if request is valid then update transaction
 	 */
 
 	public Product update(ProductDTO productDTO) {
@@ -42,6 +42,9 @@ public class ProductService {
 		return productRepo.save(product);
 	}
 	
+	/*
+	 * method to call repo to validate if a product id exists
+	 */
 	private Product validateProductId (String productId) {
 		Product product = productRepo.findCustomByProductId(productId);
 		if (product == null) {
@@ -61,7 +64,7 @@ public class ProductService {
 		RestTemplate restTemplate = new RestTemplate();
 		Product product = new Product();
 		String URL = "https://redsky.target.com/v2/pdp/tcin/" + id
-				+ "?excludes=taxonomy,price,promotion,bulk_ship,rating_and_review_reviews,rating_and_review_statistics,question_answer_statistics";
+				+ "?excludes=taxonomy,price,promotion,bulk_ship,rating_and_review_reviews,rating_and_review_statistics,question_answer_statistics"; //site provided by word doc for case studies
 
 		ObjectMapper mapper = new ObjectMapper();
 		@SuppressWarnings("rawtypes")
@@ -70,12 +73,12 @@ public class ProductService {
 		HttpStatus responseCode = response.getStatusCode();
 		try {
 			map = mapper.readValue(response.getBody(), Map.class); 
-			Map<String, Map> productMap = map.get("product");
+			Map<String, Map> productMap = map.get("product"); //begin index of JSON object on external site
 			Map<String, Map> itemMap = productMap.get("item");
 			Map<String, String> productDescriptionMap = itemMap.get("product_description");
 
 			if (responseCode == HttpStatus.OK) {
-				return product.setTitle(productDescriptionMap.get("title"));
+				return product.setTitle(productDescriptionMap.get("title")); //return title from JSON object
 			}
 		} catch (Exception e) {
 			System.out.println(responseCode);

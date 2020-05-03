@@ -9,6 +9,9 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/*
+ * Setting up swagger ui to check controller request mappings
+ */
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {

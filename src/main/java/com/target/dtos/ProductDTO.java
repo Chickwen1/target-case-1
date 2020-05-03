@@ -1,5 +1,8 @@
 package com.target.dtos;
 
+/*
+ * Defining Data Transfer Object to remove code smell/vulnerabilities when receiving a RequestBody
+ */
 public class ProductDTO {
 
 		private String productId;
