@@ -93,7 +93,7 @@ public class ProductControllerTests {
 		when(productServiceMock.update(any(ProductDTO.class))).thenReturn(p);
 
 		String productJson = new ObjectMapper().writeValueAsString(productObj);
-		mockMvc.perform(put("/products/update/" + productObj.getProductId()).contentType(MediaType.APPLICATION_JSON).content(productJson))
+		mockMvc.perform(put("/products/" + productObj.getProductId()).contentType(MediaType.APPLICATION_JSON).content(productJson))
 				.andExpect(status().isOk()).andExpect(jsonPath("$.productId").value(2))
 				.andExpect(jsonPath("$.title").value("Cat Food")).andExpect(jsonPath("$.price").value(11.59));
 	}
@@ -110,7 +110,7 @@ public class ProductControllerTests {
 		when(productServiceMock.update(any(ProductDTO.class))).thenReturn(null);
 
 		String assessJson = new ObjectMapper().writeValueAsString(productObj);
-		mockMvc.perform(put("/products/update/" + productObj.getProductId()).contentType(MediaType.APPLICATION_JSON).content(assessJson))
+		mockMvc.perform(put("/products/" + productObj.getProductId()).contentType(MediaType.APPLICATION_JSON).content(assessJson))
 				.andExpect(status().isNotFound());
 	}
 }

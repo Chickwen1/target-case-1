@@ -39,7 +39,7 @@ public class ProductController {
 	/*
 	 * Put Request logic that takes product object and goes to service layer method
 	 */
-	@RequestMapping(value = "update/{id}", method = RequestMethod.PUT, produces = "application/json")
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, produces = "application/json")
 	public @ResponseBody ResponseEntity<Product> update (@RequestBody ProductDTO productDTO, 
 			@PathVariable("id") String productId) {        
 		Product temp = productService.update(productDTO);
