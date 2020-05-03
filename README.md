@@ -66,18 +66,39 @@ Responds to an HTTP GET request at /products/{id} and delivers product data as J
 </ul>
 
 ### __Setup instructions:__
-1. Java 1.8
+<ol type="1">
+<li>Java 1.8</li>
 	Verify version using 
 ```
 java -version
 ```
-If the version is not 1.8 or higher, please update your current version at https://java.com/en/download/
-2. Spring Tool Suite (you may use another IDE): https://spring.io/tools
-3. Install Mongo DB: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/
-4. Install Maven: https://www.mkyong.com/maven/how-to-install-maven-in-windows/ 
-5. Github:
+If the version is not 1.8 or higher, please update your current version at https://java.com/en/download/</li>
+<li>2. Spring Tool Suite (you may use another IDE): https://spring.io/tools
+<li>3. Install Mongo DB: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/</li>
+
+Once installed, start the application by following the path
+```
+C:\Program Files\MongoDB\Server\4.2\bin\mongo.exe (default path)
+```
+You may use the MongoDB Compass Community app if your more comfortable with that
+
+Create a new database once loaded named Products the command is below
+```
+use Products
+```
+<li>4. Install Maven: https://www.mkyong.com/maven/how-to-install-maven-in-windows/</li> 
+<li>5. Github:</li>
+
 Download project from the following git repository
 https://github.com/Chickwen1/target-case-1 or use Git Bash (in desired location) and enter
 ```
 git clone https://github.com/Chickwen1/target-case-1.git
 ```
+</ol>
+
+Then you can start the application as a spring boot application. Once the server has started up, you may go to the fllowing URL to use swagger to test
+```
+http://localhost:8080/swagger-ui.html
+```
+
+
