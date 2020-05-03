@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.target.converters.ProductConverter;
 import com.target.dtos.ProductDTO;
+import com.target.exceptions.BadResponseException;
 import com.target.exceptions.InvalidProductException;
 import com.target.models.Product;
 import com.target.repos.ProductRepo;
@@ -35,7 +36,6 @@ public class ProductService {
 	/*
 	 * Covert DTO to product object (mapped class) and look if request is valid then update transaction
 	 */
-
 	public Product update(ProductDTO productDTO) {
 		Product product = ProductConverter.convert(productDTO);
 		validateProductId(product.getProductId());
@@ -58,7 +58,6 @@ public class ProductService {
 	/*
 	 * Method to call external site, then get JSON object. If valid, it will grab product title from map
 	 */
-	
 	@SuppressWarnings("unchecked")
 	private String getExternalTitle(String id) {
 		RestTemplate restTemplate = new RestTemplate();
@@ -80,6 +79,8 @@ public class ProductService {
 			if (responseCode == HttpStatus.OK) {
 				return product.setTitle(productDescriptionMap.get("title")); //return title from JSON object
 			}
+			else
+				throw new BadResponseException("Bad Response");
 		} catch (Exception e) {
 			System.out.println(responseCode);
 		}
