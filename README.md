@@ -73,8 +73,8 @@ Responds to an HTTP GET request at /products/{id} and delivers product data as J
 java -version
 ```
 If the version is not 1.8 or higher, please update your current version at https://java.com/en/download/</li>
-<li>2. Spring Tool Suite (you may use another IDE): https://spring.io/tools
-<li>3. Install Mongo DB: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/</li>
+<li>Spring Tool Suite (you may use another IDE): https://spring.io/tools
+<li>Install Mongo DB: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/</li>
 
 Once installed, start the application by following the path
 ```
@@ -86,8 +86,8 @@ Create a new database once loaded named Products the command is below
 ```
 use Products
 ```
-<li>4. Install Maven: https://www.mkyong.com/maven/how-to-install-maven-in-windows/</li> 
-<li>5. Github:</li>
+<li>Install Maven: https://www.mkyong.com/maven/how-to-install-maven-in-windows/</li> 
+<li>Github:</li>
 
 Download project from the following git repository
 https://github.com/Chickwen1/target-case-1 or use Git Bash (in desired location) and enter
@@ -101,4 +101,25 @@ Then you can start the application as a spring boot application. Once the server
 http://localhost:8080/swagger-ui.html
 ```
 
+### __Swagger Results:__
 
+The initial screen looks like this:
+<img src="images/swagger1.png">
+
+The first one we will look at is the GET
+<img src="images/swagger2.png">
+when we use the id "13860428" and click execute, this will be the resulting JSON object. If another id is used, a message will be shown stating the product id does not exist.
+<img src="images/swagger5.png">
+
+The second option is PUT
+<img src="images/swagger3.png">
+It is similar to the GET in which the id will be entered and within the JSON, we can change the price.
+``` 
+Note: updating any other of the JSON values like title and id will not effect the actual output
+```
+
+The resulting option will have a result of the following
+<img src="images/swagger4.png">
+```
+Note: Similar to GET, if an ID is entered that does not exist, it will display a message saying Product ID does not exist
+```
