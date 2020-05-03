@@ -42,6 +42,7 @@ public class ProductController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, produces = "application/json")
 	public @ResponseBody ResponseEntity<Product> update (@RequestBody ProductDTO productDTO, 
 			@PathVariable("id") String productId) {        
+		productDTO.setProductId(productId);
 		Product temp = productService.update(productDTO);
 		if(temp == null) return new ResponseEntity<>(temp, HttpStatus.NOT_FOUND);
 	    return new ResponseEntity<>(temp, HttpStatus.OK);
