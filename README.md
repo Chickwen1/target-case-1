@@ -104,7 +104,7 @@ http://localhost:8080/swagger-ui.html
 ### __Swagger Results:__
 
 The initial screen looks like this:
-<img src="images/swagger1.png">
+![image](https://raw.githubusercontent.com/Chickwen1/target-case-1/master/images/swagger1.PNG)
 
 The first one we will look at is the GET
 <img src="images/swagger2.png">
